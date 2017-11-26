@@ -22,7 +22,7 @@ void Merge(int * array, int left, int mid, int right);
 void Merge_Process_Generator();
 void Sort_Process_Generator(FILE * file1, FILE * file2, int * merged);
 int File_read_sort(FILE * file, int * array,int size);
-int Comp(const int * a,const int * b); 
+int Comp(const void * a,const void * b);
 
 FILE * files [NUM_FILES];
 FILE * master;
@@ -329,9 +329,10 @@ int File_read_sort(FILE * file, int * array, int size){
 
   //i represents the length of data to be piped up 
 }
-
-int Comp(const int * a,const int * b) 
+int Comp(const void * a_,const void * b_) 
 {
+	const int *a = (const int*)a_;
+	const int *b = (const int*)b_;
   if (*a==*b)
     return 0;
   else
